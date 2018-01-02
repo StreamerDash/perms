@@ -24,12 +24,13 @@ class PermissionRegistrar
     protected $cache;
 
     /** @var string */
-    protected $cacheKey = 'spatie.permission.cache';
+    protected $cacheKey = 'streamerdash.permission.cache';
 
     public function __construct(Gate $gate, Repository $cache)
     {
         $this->gate = $gate;
         $this->cache = $cache;
+        $this->cacheKey = explode('.', request()->getHttpHost())[0] . '.streamerdash.permission.cache';
     }
 
     public function registerPermissions(): bool
